@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { Database } from "../utils/database.types";
+import { Input } from "@chakra-ui/react";
 type Profiles = Database["public"]["Tables"]["profiles"]["Row"];
 
 export default function Avatar({
@@ -85,13 +86,12 @@ export default function Avatar({
         />
       )}
       <div style={{ width: size }}>
-        <label className="button primary block" htmlFor="single">
-          {uploading ? "Uploading ..." : "Upload"}
-        </label>
-        <input
+        <label htmlFor="single">{uploading ? "Uploading ..." : "Upload"}</label>
+        <Input
           style={{
             visibility: "hidden",
             position: "absolute",
+            marginBottom: "10px",
           }}
           type="file"
           id="single"
